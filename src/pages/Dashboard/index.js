@@ -18,6 +18,7 @@ class Dashboard extends Component {
         var sequencias = [];
         var caracteresUsaveis = this.gerarUsaveis(25);
         let sequenciaAtual = [];
+        let x = 0;
         for (let i = 0; i < m; i++) {
             sequenciaAtual.push(caracteresUsaveis[i]);
         }
