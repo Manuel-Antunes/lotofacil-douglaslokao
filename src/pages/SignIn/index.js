@@ -15,7 +15,6 @@ function Signin() {
     const loading = useSelector(state => state.auth.loading);
 
     function handleSubmit({ login, password }) {
-        console.log("HAI");
         dispatch(signInRequest(login, password));
     }
     return (

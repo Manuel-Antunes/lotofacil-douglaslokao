@@ -135,7 +135,6 @@ class Dashboard extends Component {
     }
 
     async componentDidMount() {
-        console.log(this.props.profile.onze);
         await this.setState({
             scores: [
                 {
@@ -162,12 +161,10 @@ class Dashboard extends Component {
         });
     }
     render() {
-        console.log(this.props.profile);
         const { scores } = this.state;
         const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
         const hotNumber = [2, 3, 5, 6, 8, 9, 12, 15, 17, 18, 19, 21, 23, 24, 25];
         const possiblePoints = [11, 12, 13, 14, 15];
-        console.log(this.props);
         return (
             <>
                 <Navbar name={this.props.profile.name} />
@@ -196,7 +193,6 @@ class Dashboard extends Component {
                                                 );
                                             }
                                         }
-                                        console.log(selectedNumbers);
                                         this.setState({
                                             selectedNumbers
                                         });

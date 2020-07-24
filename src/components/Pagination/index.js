@@ -4,7 +4,6 @@ import { Container } from './styles';
 
 function Pagination({ length }) {
     const a = length;
-    console.log(a);
     const items = [];
     if (a <= 3) {
         for (let i = 0; i < a; i++) {

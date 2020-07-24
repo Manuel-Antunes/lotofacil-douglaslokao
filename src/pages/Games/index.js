@@ -44,7 +44,6 @@ class Games extends React.Component {
             })
             try {
                 const { data } = await api.get('/tables/games?id=' + a.props.match.params.id + "&page=" + a.state.page);
-                console.log(data);
                 a.setState({
                     games: data.array
                 })

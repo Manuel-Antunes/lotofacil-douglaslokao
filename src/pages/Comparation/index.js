@@ -69,7 +69,6 @@ class Comparation extends React.Component {
                                                 );
                                             }
                                         }
-                                        console.log(selectedNumbers);
                                         this.setState({
                                             selectedNumbers
                                         });
