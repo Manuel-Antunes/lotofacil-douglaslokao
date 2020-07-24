@@ -18,7 +18,6 @@ class Dashboard extends Component {
         var sequencias = [];
         var caracteresUsaveis = this.gerarUsaveis(25);
         let sequenciaAtual = [];
-        let x = 0;
         for (let i = 0; i < m; i++) {
             sequenciaAtual.push(caracteresUsaveis[i]);
         }
@@ -50,7 +49,7 @@ class Dashboard extends Component {
                                 sequenciaAtual[j] = caracteresUsaveis[caracteresUsaveis.indexOf(sequenciaAtual[i]) + j - i];
                             }
                             sequencias.push(JSON.stringify(sequenciaAtual));
-                        } else if (sequenciaAtual[0] === caracteresUsaveis[(caracteresUsaveis.length - 1) - (sequenciaAtual.length - 1)] && sequenciaAtual[sequenciaAtual.length - 1] == caracteresUsaveis[caracteresUsaveis.length - 1]) {
+                        } else if (sequenciaAtual[0] === caracteresUsaveis[(caracteresUsaveis.length - 1) - (sequenciaAtual.length - 1)] && sequenciaAtual[sequenciaAtual.length - 1] === caracteresUsaveis[caracteresUsaveis.length - 1]) {
                             return sequencias;
                         }
                     }
@@ -62,7 +61,6 @@ class Dashboard extends Component {
                 }
                 y++;
             }
-            x++;
         }
         return sequencias;
     }

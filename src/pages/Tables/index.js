@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import api from '~/services/api';
 import { toast } from 'react-toastify';
 import pt from "date-fns/locale/pt"
-import { closestIndexTo } from 'date-fns';
 import { format, parseISO } from 'date-fns';
 class Tables extends React.Component {
     state = {
@@ -151,16 +150,16 @@ class Tables extends React.Component {
                                             <tr>
                                                 <td>
                                                     {
-                                                        column.gain || column.gain == 0 ? formatPrice(column.gain) : "Conferir"
+                                                        column.gain || column.gain === 0 ? formatPrice(column.gain) : "Conferir"
                                                     }
                                                 </td>
                                             </tr>
                                         </td>
                                         <td>
                                             <tr>
-                                                <td style={column.gain || column.gain == 0 ? { color: parseFloat(column.gain) - (parseFloat(column.games) * 2.50) > 0 ? "green" : "red" } : {}}>
+                                                <td style={column.gain || column.gain === 0 ? { color: parseFloat(column.gain) - (parseFloat(column.games) * 2.50) > 0 ? "green" : "red" } : {}}>
                                                     {
-                                                        column.gain || column.gain == 0 ? formatPrice(parseFloat(column.gain) - (parseFloat(column.games) * 2.50)) : "Conferir"
+                                                        column.gain || column.gain === 0 ? formatPrice(parseFloat(column.gain) - (parseFloat(column.games) * 2.50)) : "Conferir"
                                                     }
                                                 </td>
                                             </tr>
