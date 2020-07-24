@@ -54,8 +54,6 @@ class Games extends React.Component {
         }
     }
     render() {
-
-        const id = this.props.match.params.id;
         const { games } = this.state;
         const a = this.state.page;
         return (

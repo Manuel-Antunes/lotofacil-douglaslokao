@@ -16,7 +16,7 @@ class Comparation extends React.Component {
     }
     async handlerComparator() {
         const { selectedNumbers } = this.state;
-        if (this.state.selectedNumbers.length == 15) {
+        if (this.state.selectedNumbers.length === 15) {
             try {
                 const { data } = await api.put('/tables?id=' + this.props.match.params.id, { selectedNumbers });
                 var gain = 0;
@@ -25,7 +25,7 @@ class Comparation extends React.Component {
                 const { dispatch } = this.props;
                 dispatch(updateMainScreen(onze, doze, treze, quatorze, quinze));
                 data.pontos.forEach((e, index) => {
-                    gain += e * (index == 0 ? 5 : index == 1 ? 10 : index == 2 ? 25 : index == 3 ? 1300 : 2000);
+                    gain += e * (index === 0 ? 5 : index === 1 ? 10 : index === 2 ? 25 : index === 3 ? 1300 : 2000);
                 })
                 await this.setState({
                     pontos: data.pontos,
@@ -52,7 +52,7 @@ class Comparation extends React.Component {
                                 array.map(element => (
                                     <button id={"button " + element} onClick={(e) => {
                                         const { selectedNumbers } = this.state;
-                                        if (selectedNumbers.indexOf(element) != -1) {
+                                        if (selectedNumbers.indexOf(element) !== -1) {
                                             selectedNumbers.splice(selectedNumbers.indexOf(element), 1);
                                             document.getElementById("button " + element).style.backgroundColor = "#EEE";
                                             document.getElementById("button " + element).style.borderColor = "#ac2f97";
@@ -84,7 +84,7 @@ class Comparation extends React.Component {
                     </Comparator>
                     <GameTable>
                         {
-                            this.state.pontos.length != 0 ? (
+                            this.state.pontos.length !== 0 ? (
                                 <>
                                     <table>
                                         <thead>
@@ -120,7 +120,7 @@ class Comparation extends React.Component {
                                                             <tr>
                                                                 <td>
                                                                     {
-                                                                        formatPrice(column * (index == 0 ? 5 : index == 1 ? 10 : index == 2 ? 25 : index == 3 ? 1300 : 2000))
+                                                                        formatPrice(column * (index === 0 ? 5 : index === 1 ? 10 : index === 2 ? 25 : index === 3 ? 1300 : 2000))
                                                                     }
                                                                 </td>
                                                             </tr>

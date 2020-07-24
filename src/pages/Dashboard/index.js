@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Container, Create, Scores, Comparator } from './styles';
 import Navbar from '../../components/Navbar';
 import { formatPrice } from '../../util/format';
-import { matchPath } from 'react-router-dom';
 import api from '~/services/api';
 import { connect } from 'react-redux';
 
@@ -18,22 +17,19 @@ class Dashboard extends Component {
     gerarLista(m) {
         var sequencias = [];
         var caracteresUsaveis = this.gerarUsaveis(25);
-        var used = [];
         let sequenciaAtual = [];
-        let x;
-
         for (let i = 0; i < m; i++) {
             sequenciaAtual.push(caracteresUsaveis[i]);
         }
         sequencias.push(JSON.stringify(sequenciaAtual));
-        while (sequencias.length - 1 != this.calcualrPossibilidade(m, caracteresUsaveis.length)) {
+        while (sequencias.length - 1 !== this.calcualrPossibilidade(m, caracteresUsaveis.length)) {
             let y = 0;
 
             for (let i = m - 1; i >= 0; i--) {
                 let test = false;
                 let h = 0;
                 for (let j = sequenciaAtual.length - 1; j >= 0; j++) {
-                    if (sequenciaAtual[j] == caracteresUsaveis[(caracteresUsaveis.length - 1) - h]) {
+                    if (sequenciaAtual[j] === caracteresUsaveis[(caracteresUsaveis.length - 1) - h]) {
                         test = true;
                     } else {
                         test = false;
@@ -45,20 +41,20 @@ class Dashboard extends Component {
                 if (test) {
                     return sequencias;
                 }
-                if (i != sequenciaAtual.length - 1) {
-                    if (sequenciaAtual[i + 1] == caracteresUsaveis[caracteresUsaveis.length - (y - 1) - 1]) {
-                        if (sequenciaAtual[0] != caracteresUsaveis[(caracteresUsaveis.length - 1) - (sequenciaAtual.length - 1)]) {
+                if (i !== sequenciaAtual.length - 1) {
+                    if (sequenciaAtual[i + 1] === caracteresUsaveis[caracteresUsaveis.length - (y - 1) - 1]) {
+                        if (sequenciaAtual[0] !== caracteresUsaveis[(caracteresUsaveis.length - 1) - (sequenciaAtual.length - 1)]) {
                             sequenciaAtual[i] = caracteresUsaveis[caracteresUsaveis.indexOf(sequenciaAtual[i]) + 1];
                             for (let j = i + 1; j < sequenciaAtual.length; j++) {
                                 sequenciaAtual[j] = caracteresUsaveis[caracteresUsaveis.indexOf(sequenciaAtual[i]) + j - i];
                             }
                             sequencias.push(JSON.stringify(sequenciaAtual));
-                        } else if (sequenciaAtual[0] == caracteresUsaveis[(caracteresUsaveis.length - 1) - (sequenciaAtual.length - 1)] && sequenciaAtual[sequenciaAtual.length - 1] == caracteresUsaveis[caracteresUsaveis.length - 1]) {
+                        } else if (sequenciaAtual[0] === caracteresUsaveis[(caracteresUsaveis.length - 1) - (sequenciaAtual.length - 1)] && sequenciaAtual[sequenciaAtual.length - 1] == caracteresUsaveis[caracteresUsaveis.length - 1]) {
                             return sequencias;
                         }
                     }
                 } else {
-                    if (sequenciaAtual[i] != caracteresUsaveis[caracteresUsaveis.length - 1]) {
+                    if (sequenciaAtual[i] !== caracteresUsaveis[caracteresUsaveis.length - 1]) {
                         sequenciaAtual[i] = caracteresUsaveis[caracteresUsaveis.indexOf(sequenciaAtual[i]) + 1];
                         sequencias.push(JSON.stringify(sequenciaAtual));
                     }
@@ -89,7 +85,7 @@ class Dashboard extends Component {
             nuk.push(parseInt(this.state.selectedNumbers[i]));
         }
         for (let i = 1; i <= quantos; i++) {
-            if (nuk.indexOf(i) == -1) {
+            if (nuk.indexOf(i) === -1) {
                 ajeitado.push(i);
             }
         }
@@ -184,7 +180,7 @@ class Dashboard extends Component {
                                 array.map(element => (
                                     <button id={"button " + element} onClick={(e) => {
                                         const { selectedNumbers } = this.state;
-                                        if (selectedNumbers.indexOf(element) != -1) {
+                                        if (selectedNumbers.indexOf(element) !== -1) {
                                             selectedNumbers.splice(selectedNumbers.indexOf(element), 1);
                                             document.getElementById("button " + element).style.backgroundColor = "#EEE";
                                             document.getElementById("button " + element).style.borderColor = "#ac2f97";
@@ -214,7 +210,7 @@ class Dashboard extends Component {
                         <button type="submit" onClick={e => {
                             e.preventDefault();
                             if (this.state.numeroDeApostas > 0 && this.state.numeroDeApostas <= 2000) {
-                                if (this.state.selectedNumbers.length == 5) {
+                                if (this.state.selectedNumbers.length === 5) {
                                     this.handlerSalvar();
                                 } else {
                                     toast.error("Selecione Todos os 5 numeros");
@@ -273,7 +269,7 @@ class Dashboard extends Component {
                         <div>
                             {
                                 array.map((element) => (
-                                    hotNumber.map((number) => element == number ? (
+                                    hotNumber.map((number) => element === number ? (
                                         < button id={"button " + element} key={element}>{element}</button>
                                     ) : null)
                                 ))
