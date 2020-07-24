@@ -1,8 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-docker run --name container-mysql -e MYSQL_ROOT_PASSWORD=root -p 5432:5432 -d -t mysql/mysql-server:latest
-
 export default createGlobalStyle`
     *{
         ::-webkit-scrollbar {
