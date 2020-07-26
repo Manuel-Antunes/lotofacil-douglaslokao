@@ -56,36 +56,54 @@ export const Comparator = styled.div`
             cursor: pointer;
         }
     }
+    @media(max-width: 720px){
+        margin: 10px 10px;
+        padding: 10px 10px;
+        justify-content: center;
+        align-items: center;
+        div{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            button{
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
 `;
 export const GameTable = styled.div`
-        font-family: 'Orbitron', sans-serif;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 70%;
-        justify-content: space-between;
-        padding: 20px;
-        align-items: center;
-        margin: 20px;
-        border: solid 2px #ac2f97;
-        background-image: linear-gradient(#fff,#e0dfe1);
-        border-radius: 10px;
-        table{
-            font-family: Arial, sans-serif;
-            img{
-                width: 30px;
-                margin-right: 10px;
-            }
-            th,tr,td {
-                text-align: center; 
-                vertical-align: middle;
-                height: 40px;
-            }
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 70%;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    margin: 20px;
+    border: solid 1px #ac2f97;
+    background-image: linear-gradient(#fff,#e0dfe1);
+    border-radius: 10px;
+    table{
+        font-family: Arial, sans-serif;
+        img{
+            width: 30px;
+            margin-right: 10px;
         }
-        div{
-            font-family: Arial, sans-serif;
-            padding: 5px 10px;
-            border: 1px solid #ac2f97;
-            border-radius: 20px;
+        th,tr,td {
+            text-align: center; 
+            vertical-align: middle;
+            height: 40px;
         }
+    }
+    div{
+        font-family: Arial, sans-serif;
+        padding: 5px 10px;
+        border: 1px solid #ac2f97;
+        border-radius: 20px;
+    }
+    @media (max-width: 720px){
+        width: 95%;
+    }
 `;

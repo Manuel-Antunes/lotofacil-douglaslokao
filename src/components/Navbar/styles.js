@@ -8,9 +8,19 @@ export const Container = styled.div`
   margin: 0;
   flex-direction: row;
   align-items: center;
-  padding:30px;
-  border-radius: 10px;
   justify-content: space-between;
+  padding:30px;
+  box-shadow: black;
+  button{
+    background: none;
+    border: none;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  .menu{
+    display: none;
+  }
   img{
     height: 90px;
   }
@@ -25,6 +35,39 @@ export const Container = styled.div`
         height:100%;
         border-bottom: 5px solid #7159c1;
       }
+    }
+  }
+  @media(max-width:720px) {
+      .menu{
+      display: block;
+      }
+      #nav{
+        display: none;
+      }
+      img{
+      height: 30px;
+      }
+  }
+`;
+export const Hamburguer = styled.div`
+  display: none;
+  @media(max-width:720px) {
+    display: none;
+    position: absolute;
+    text-align: center;
+    padding: 20px;
+    border-bottom-left-radius: 10px;
+    flex-direction: column;
+    width: 40%;
+    font-family: "Orbitron", Helvetica, sans-serif;
+    font-weight: bold;
+    height: fit-content;
+    background: #ac2f97;
+    right: 0;
+    a{
+      text-decoration: none;
+      color: #FFF;
+      margin-bottom: 10px;
     }
   }
 `;

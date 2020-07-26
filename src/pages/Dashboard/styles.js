@@ -6,12 +6,17 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: space-between;
     padding: 30px 90px;
+    @media(max-width: 720px){
+        flex-direction:column;
+        justify-items: center;
+        align-items: center;
+        padding: 10px;
+    }
 `;
 export const Create = styled.div`
     font-size: 30px;
     font-family: 'Orbitron', sans-serif;
     display: block;
-    width: 540px;
     div{
         margin-bottom:30px;
         width: 450px;
@@ -73,6 +78,54 @@ export const Create = styled.div`
             cursor: pointer;
         }
     }
+    @media(max-width: 720px){
+        display:flex;
+        font-size: 15px;
+        flex-direction: column;
+        align-items:center;
+        justify-content: center;
+        div{
+            margin-bottom:30px;
+            max-width: 340px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            button{
+                border: solid 2px #ac2f97;
+                background: #EEEFFF;
+                margin-right: 5px;
+                margin-bottom: 5px;
+                border-radius: 100%;
+                height: 30px;
+                transition: background 0.1s,color 0.1s;
+                width: 30px;
+                &:focus{
+                    outline: none;
+                }
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
+        button[type=Submit]{
+            font-family: 'Orbitron', sans-serif;
+            font-size:15px;
+            border-radius: 10px;
+            width: 100%;
+            margin-left: 0;
+            border:solid #4732a3;
+            background-color: #6a47e1;
+            color: #FFF;
+            transition: background 0.2s;
+            &:focus{
+                outline: none;
+            }
+            &:hover{
+                background-color : ${darken(0.1, "#6a47e1")};
+                cursor: pointer;
+            }
+        }
+    }
 `;
 export const Scores = styled.div`
     table{
@@ -87,6 +140,13 @@ export const Scores = styled.div`
             text-align: center; 
             vertical-align: middle;
             height: 40px;
+        }
+    }
+    @media(max-width: 720px){
+        table{
+            justify-content: space-between;
+            margin: 20px;
+            width: 90%;
         }
     }
 `;
@@ -121,25 +181,15 @@ export const Comparator = styled.div`
                 cursor: pointer;
             }
         }
-    }
-    #Comparator{
-        margin: 10px;
-        font-family: 'Orbitron', sans-serif;
-        border-radius: 20px;
-        width: fit-content;
-        color: #EEEFFF;
-        border: #4732a3 solid 1px;
-        padding: 5px 20px;
-        float: right;
-        
-        transition: background 0.2s,color 0.2s;
-        background-color: #6a47e1;
-        &:focus{
-                outline: none;
+        @media(max-width:720px){
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 20px;
+            justify-content: center;
+            button{
+                width: 30px;
+                height: 30px;
             }
-        &:hover{
-            background: ${darken(0.2, "#6a47e1")};
-            cursor: pointer;
         }
     }
 `;

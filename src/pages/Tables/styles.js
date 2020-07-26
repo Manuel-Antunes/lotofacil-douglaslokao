@@ -10,6 +10,9 @@ export const Container = styled.div`
             cursor: pointer;
         }
     }
+    @media(max-width: 720px){
+        flex-direction: row;
+    }
 `;
 export const GameTable = styled.table`
         img{
@@ -35,6 +38,13 @@ export const GameTable = styled.table`
             vertical-align: middle;
             height: 40px;
         }
+        @media(max-width: 720px){
+            font-size: 10px;
+            width: 95%;
+            img{
+                width:20px;
+            }
+        }
 `;
 
 export const Pagination = styled.div`
@@ -56,6 +66,14 @@ export const Pagination = styled.div`
         &:hover{
             cursor: pointer;
         }
+    }
+    @media(max-width: 720px){
+        float: none;
+        padding:0;
+        font-size:15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
 `;

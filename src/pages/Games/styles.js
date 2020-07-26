@@ -6,6 +6,12 @@ export const Container = styled.div`
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px;
     padding: 20px;
+    @media(max-width: 720px){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 export const Game = styled.div`
     width:250px;
@@ -57,5 +63,12 @@ export const Pagination = styled.div`
             cursor: pointer;
         }
     }
-
+    @media(max-width: 720px){
+        float: none;
+        padding:0;
+        font-size:15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `;

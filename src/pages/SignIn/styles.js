@@ -5,25 +5,26 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     height: 100%;
+    
     #logos{
-        
-        width:50%;
+        display:flex;
+        flex-shrink: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content:center;
+        background-color:#ac2f97; 
+        width: 50%;
         #logo{
             width: 150px;
             margin-bottom: 20px;
         }
         #loto{
-            width: 500px;
+            max-width: 500px;
         }
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content:center;
-        background-color:#ac2f97; 
+        
     }
     #form{
-        width:50%;
-        height:100%;
+        width: 50%;
         font-family: sans-serif;
         display:flex;
         flex-direction: column;
@@ -39,6 +40,7 @@ export const Container = styled.div`
             width:100px;
         }
         h2{
+            font-family: "Orbitron", sans-serif;
             margin-bottom: 50px;
         }
         display:flex;
@@ -46,7 +48,7 @@ export const Container = styled.div`
         align-content: center;
         justify-content:center;
         input{
-            border: solid 2px black;
+            border: solid 1px #ac2f97;
             padding:15px;
             border-radius: 50px;
             width: 300px;
@@ -65,6 +67,7 @@ export const Container = styled.div`
         button{
             padding:10px;
             border-radius: 50px;
+            border: 1px solid #AAA;
             width: 200px;
             margin: 50px;
             font-family: "Orbitron", sans-serif;
@@ -79,5 +82,26 @@ export const Container = styled.div`
                 background-color: ${darken(0.1, "#ac2f97")}
             }
         }
+    }
+    @media(max-width: 720px){
+        
+        #form{
+            margin-top: 20px;
+            width: 100%;
+        }
+        #logos{
+            flex-direction: row;
+            padding: 20px;
+            width: 100%;
+            #logo{
+                width: 60px;
+                margin-bottom: 20px;
+            }
+            #loto{
+                
+                width: 200px;
+            }
+        }
+        flex-direction: column;
     }
 `;
