@@ -4,6 +4,7 @@ export const Container = styled.div`
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
   background: #ac2f97;
   display:flex;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
   flex:1;
   margin: 0;
   flex-direction: row;
@@ -45,7 +46,7 @@ export const Container = styled.div`
         display: none;
       }
       img{
-      height: 30px;
+      height: 40px;
       }
   }
 `;
@@ -58,10 +59,12 @@ export const Hamburguer = styled.div`
     padding: 20px;
     border-bottom-left-radius: 10px;
     flex-direction: column;
-    width: 40%;
+    width: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     font-family: "Orbitron", Helvetica, sans-serif;
     font-weight: bold;
     height: fit-content;
+    transition: all .2s ease-in-out;
     background: #ac2f97;
     right: 0;
     a{

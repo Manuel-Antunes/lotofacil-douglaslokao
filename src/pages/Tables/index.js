@@ -11,33 +11,35 @@ import api from '~/services/api';
 import { toast } from 'react-toastify';
 import pt from "date-fns/locale/pt"
 import { format, parseISO } from 'date-fns';
+import { FaSpinner } from 'react-icons/fa';
+
+
 class Tables extends React.Component {
     state = {
         tables: [],
         page: 1,
-        aLength: 1
+        aLength: 1,
+        loading: true
     }
     async handerConstruct() {
         const { data } = await api.get('/tables?page=' + this.state.page);
-        console.log(data);
         return data;
     }
     async componentDidMount() {
         const a = await this.handerConstruct();
-        this.setState({ tables: a.GameTables, aLength: a.aLength });
-        console.log()
-
+        this.setState({ tables: a.GameTables, aLength: a.aLength, loading: false });
     }
     async handlerPageUp(a) {
         if (a.state.page < Math.trunc(a.state.aLength) / 20) {
             const num = a.state.page;
             await a.setState({
-                page: num + 1
+                page: num + 1,
+                loading: true
             })
             try {
                 const { data } = await api.get('/tables?page=' + this.state.page);
                 a.setState({
-                    tables: data.GameTables, aLength: data.aLength
+                    tables: data.GameTables, aLength: data.aLength, loading: false
                 })
             } catch{
                 return toast.error("ocorreu um erro");
@@ -47,13 +49,14 @@ class Tables extends React.Component {
     async handlerPageDown(a) {
         if (a.state.page > 1) {
             await a.setState({
-                page: a.state.page - 1
+                page: a.state.page - 1,
+                loading: true
             })
             try {
                 const { data } = await api.get('/tables?page=' + this.state.page);
                 console.log(data);
                 a.setState({
-                    tables: data.GameTables, aLength: data.aLength
+                    tables: data.GameTables, aLength: data.aLength, loading: false
                 })
             } catch{
                 return toast.error("ocorreu um erro");
@@ -86,7 +89,7 @@ class Tables extends React.Component {
             <>
                 <Navbar name={this.props.profile.name} />
                 <Container>
-                    <GameTable>
+                    <GameTable loading={this.state.loading}>
                         <thead>
                             <tr>
                                 <th>Jogo Salvo</th>
@@ -99,7 +102,7 @@ class Tables extends React.Component {
                         </thead>
                         <tbody>
                             {
-                                tables.map((column, index) => (
+                                this.state.loading ? (<FaSpinner color="#ac2f97" size={20} />) : tables.map((column, index) => (
                                     <tr key={column}>
                                         <td>
                                             <tr>

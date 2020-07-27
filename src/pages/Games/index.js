@@ -5,17 +5,21 @@ import Navbar from '../../components/Navbar';
 import { connect } from 'react-redux';
 import api from '~/services/api';
 import { toast } from 'react-toastify';
+import { FaSpinner } from 'react-icons/fa';
+
 class Games extends React.Component {
     state = {
         page: 1,
         games: [],
-        aLength: 1
+        aLength: 1,
+        loading: true
     }
     async componentDidMount() {
         const { data } = await api.get('/tables/games?id=' + this.props.match.params.id + "&page=" + this.state.page);
         this.setState({
             games: data.array,
-            aLength: data.aLength>=1?data.aLength:1
+            aLength: data.aLength >= 1 ? data.aLength : 1,
+            loading: false
         })
         // this.setState({
         //     games: data
@@ -25,12 +29,14 @@ class Games extends React.Component {
         if (a.state.page < Math.trunc(a.state.aLength) / 10) {
             const num = a.state.page;
             await a.setState({
-                page: num + 1
+                page: num + 1,
+                loading: true
             })
             try {
                 const { data } = await api.get('/tables/games?id=' + a.props.match.params.id + "&page=" + a.state.page);
                 a.setState({
-                    games: data.array
+                    games: data.array,
+                    loading: false
                 })
             } catch{
                 return toast.error("ocorreu um erro");
@@ -40,12 +46,14 @@ class Games extends React.Component {
     async handlerPageDown(a) {
         if (a.state.page > 1) {
             await a.setState({
-                page: a.state.page - 1
+                page: a.state.page - 1,
+                loading: true
             })
             try {
                 const { data } = await api.get('/tables/games?id=' + a.props.match.params.id + "&page=" + a.state.page);
                 a.setState({
-                    games: data.array
+                    games: data.array,
+                    loading: false
                 })
             } catch{
                 return toast.error("ocorreu um erro");
@@ -58,9 +66,9 @@ class Games extends React.Component {
         return (
             <>
                 <Navbar name={this.props.profile.name} />
-                <Container>
+                <Container loading={this.state.loading}>
                     {
-                        games.map((game, index) => (
+                        this.state.loading ? (<FaSpinner color="#ac2f97" size={50} />) : games.map((game, index) => (
                             <Game key={index}>
                                 <b>
                                     {"Jogo " + (index + 1 + ((this.state.page - 1) * 10))}
@@ -83,7 +91,7 @@ class Games extends React.Component {
                     <button onClick={() => { this.handlerPageUp(this) }}>
                         Proximo
                    </button>
-                    <spam>Page:{a}/{Math.trunc(this.state.aLength/ 10)>=1?Math.ceil(this.state.aLength/ 10):1 }</spam>
+                    <spam>Page:{a}/{Math.trunc(this.state.aLength / 10) >= 1 ? Math.ceil(this.state.aLength / 10) : 1}</spam>
                 </Pagination>
             </>
         )

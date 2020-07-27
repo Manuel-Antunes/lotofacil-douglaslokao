@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 export const Container = styled.div`
     display:flex;
@@ -14,7 +14,17 @@ export const Container = styled.div`
         flex-direction: row;
     }
 `;
-export const GameTable = styled.table`
+const rotate = keyframes`
+    form {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+`
+export const GameTable = styled.table.attrs(props => ({
+    loading: props.loading
+}))`
         img{
             transition: border 0.2s;
             &:hover{
@@ -38,6 +48,15 @@ export const GameTable = styled.table`
             vertical-align: middle;
             height: 40px;
         }
+        ${props => props.loading && 
+            css`
+            display:flex;
+            align-content: center;
+            justify-content: center;
+            svg{
+                animation: ${rotate} 2s linear infinite;
+            }
+        `}
         @media(max-width: 720px){
             font-size: 10px;
             width: 95%;

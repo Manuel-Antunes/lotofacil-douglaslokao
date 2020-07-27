@@ -6,17 +6,23 @@ import { toast } from 'react-toastify';
 import api from '~/services/api';
 import { updateMainScreen } from '~/store/models/user/actions';
 import { formatPrice } from '~/util/format';
+import { FaSpinner } from 'react-icons/fa';
+
 class Comparation extends React.Component {
     state = {
         game: [],
         selectedNumbers: [],
         pontos: [],
         size: 0,
-        gain: 0
+        gain: 0,
+        loading: false
     }
     async handlerComparator() {
         const { selectedNumbers } = this.state;
         if (this.state.selectedNumbers.length === 15) {
+            this.setState({
+                loading: true
+            });
             try {
                 const { data } = await api.put('/tables?id=' + this.props.match.params.id, { selectedNumbers });
                 var gain = 0;
@@ -30,7 +36,8 @@ class Comparation extends React.Component {
                 await this.setState({
                     pontos: data.pontos,
                     size: data.size,
-                    gain
+                    gain,
+                    loading: false
                 })
             } catch {
                 toast.error("Ocorreu um erro ao efetuar a comparação, por favor tente novamente");
@@ -81,7 +88,7 @@ class Comparation extends React.Component {
                         </button>
 
                     </Comparator>
-                    <GameTable>
+                    <GameTable loading={this.state.loading}>
                         {
                             this.state.pontos.length !== 0 ? (
                                 <>
@@ -148,6 +155,9 @@ class Comparation extends React.Component {
                                     </div>
                                 </>
                             ) : (<h3>Ao escolher os valores será gerada a tabela</h3>)
+                        }
+                        {
+                            this.state.loading ? (<FaSpinner color="#ac2f97" size={14} />) : null
                         }
                     </GameTable>
                 </Container>

@@ -14,9 +14,9 @@ function Navbar({ name }) {
         dispatch(signOut());
     }
     function toggle() {
-
         const a = document.getElementById("hamburguer")
         a.style.display === "" ? a.style.display = "flex" : a.style.display = "";
+        a.style.width === "" ? a.style.width = "60%" : a.style.width = "";
     }
     return (
         <>

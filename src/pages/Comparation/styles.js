@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { darken } from 'polished';
 export const Container = styled.div`
     display: flex;
@@ -6,6 +6,15 @@ export const Container = styled.div`
     flex-wrap: wrap;
     justify-content: center;
 `;
+const rotate = keyframes`
+    form {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+`
 export const Comparator = styled.div`
     padding: 40px 60px;
     background-image:   linear-gradient(#fff,#e0dfe1);
@@ -72,7 +81,9 @@ export const Comparator = styled.div`
         }
     }
 `;
-export const GameTable = styled.div`
+export const GameTable = styled.div.attrs(props => ({
+    loading: props.loading
+}))`
     font-family: 'Orbitron', sans-serif;
     display: flex;
     flex-direction: row;
@@ -85,6 +96,15 @@ export const GameTable = styled.div`
     border: solid 1px #ac2f97;
     background-image: linear-gradient(#fff,#e0dfe1);
     border-radius: 10px;
+    ${props => props.loading &&
+        css`
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            svg{
+                animation: ${rotate} 2s linear infinite;
+            }
+        `}
     table{
         font-family: Arial, sans-serif;
         img{

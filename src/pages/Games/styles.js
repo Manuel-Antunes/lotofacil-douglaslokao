@@ -1,10 +1,21 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div.attrs(props => ({
+    loading: props.loading
+}))`
     
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 10px;
+    ${props => props.loading &&
+        css`
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            svg{
+                animation: ${rotate} 2s linear infinite;
+            }
+        `}
     padding: 20px;
     @media(max-width: 720px){
         display: flex;
@@ -13,6 +24,15 @@ export const Container = styled.div`
         align-items: center;
     }
 `;
+const rotate = keyframes`
+    form {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+`
 export const Game = styled.div`
     width:250px;
     padding:20px 0;
@@ -20,6 +40,7 @@ export const Game = styled.div`
     border: solid 1px #ac2f97;
     text-align:center;
     font-family: sans-serif;
+    
     div{
     margin-top:20px;
     justify-content: center;
