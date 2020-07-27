@@ -2,13 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Hamburguer } from './styles';
 import logo from '../../assets/logotrevo.fw.png';
-import sidebar from '../../assets/sidebar.svg';
+import sidebar from '../../assets/nav.png';
 import loto from '../../assets/lotofacil.fw.png';
 import propTypes from 'prop-types';
 import { signOut } from '~/store/models/auth/actions';
 import { useDispatch } from 'react-redux';
-
-function Navbar({ name }) {
+function Navbar({ name, admin }) {
     const dispatch = useDispatch();
     function handleSignOut() {
         dispatch(signOut());
@@ -29,6 +28,12 @@ function Navbar({ name }) {
                     <img src={sidebar} alt="sidebar button" />
                 </button>
                 <div id={"nav"}>
+                    {admin ? (
+                        <Link to={"/usuarios"}>Usuarios</Link>
+                    ) : null}
+                    {admin ? (
+                        <Link to={"/cadastro"}>Cadastro</Link>
+                    ) : null}
                     <Link to={"/dashboard"}>Criar Jogos</Link>
                     <Link to={"/tables"}>Jogos Salvos</Link>
                     <Link onClick={handleSignOut}>{name + " (Sair)"}</Link>
@@ -36,6 +41,12 @@ function Navbar({ name }) {
 
             </Container>
             <Hamburguer id={"hamburguer"} >
+                {admin ? (
+                    <Link to={"/usuarios"}>Usuarios</Link>
+                ) : null}
+                {admin ? (
+                    <Link to={"/cadastro"}>Cadastro</Link>
+                ) : null}
                 <Link to={"/dashboard"}>Criar Jogos</Link>
                 <Link to={"/tables"}>Jogos Salvos</Link>
                 <Link onClick={handleSignOut}>{name + " (Sair)"}</Link>

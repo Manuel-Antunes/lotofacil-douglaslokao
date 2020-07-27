@@ -33,9 +33,9 @@ function Signin() {
                 </h2>
                 <Form onSubmit={handleSubmit}>
                     <label htmlFor={"login"}>Usuário</label>
-                    <Input placeholder="Insira aqui seu email" type="text" name="login" id="login" />
+                    <Input className="form-control" placeholder="Insira aqui seu email" type="text" name="login" id="login" />
                     <label htmlFor={"passoword"}>Senha</label>
-                    <Input placeholder="Insira aqui sua senha" type="password" name="password" id="password" />
+                    <Input className="form-control" placeholder="Insira aqui sua senha" type="password" name="password" id="password" />
                     <h3>esqueci minha senha</h3>
                     <button type="submit">{loading ? "carregando..." : "Login"}</button>
                 </Form>

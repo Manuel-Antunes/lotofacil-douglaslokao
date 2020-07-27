@@ -116,25 +116,19 @@ class Dashboard extends Component {
         return jogosGerados;
     }
 
-    novaHora() {
-        function pad(s) {
-            return (s < 10) ? '0' + s : s;
-        }
-        var date = new Date();
-        return [date.getHours(), date.getMinutes(), date.getSeconds()].map(pad).join(':');
-    }
     async handlerSalvar() {
         const games = this.gerarJogos(parseInt(this.state.numeroDeApostas), this.shuffle(this.gerarLista(15)));
         try {
             await api.post("/tables", { games });
         } catch (err) {
-            toast.error("ocorreu um erro");
+            toast.error("ocorreu um erro, verifique sua conexão ou se seu contrato está em dia");
             return
         }
         toast.success("jogos gerados!");
     }
 
     async componentDidMount() {
+        console.log(this.props);
         await this.setState({
             scores: [
                 {
@@ -167,7 +161,7 @@ class Dashboard extends Component {
         const possiblePoints = [11, 12, 13, 14, 15];
         return (
             <>
-                <Navbar name={this.props.profile.name} />
+                <Navbar name={this.props.profile.name} admin={this.props.profile.admin} />
                 <Container>
                     <Create>
                         <b>Criar Jogos</b>
@@ -260,7 +254,7 @@ class Dashboard extends Component {
                 </Container>
                 <div style={{ margin: "0 auto" }}>
                     <Comparator>
-                        <h2>Jogo Mais Famoso</h2>
+                        <h2>Números Sorteados com Maior Frequência</h2>
                         <div>
                             {
                                 array.map((element) => (

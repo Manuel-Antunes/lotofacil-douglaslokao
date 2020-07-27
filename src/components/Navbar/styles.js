@@ -28,8 +28,8 @@ export const Container = styled.div`
   div{
     a{
       color: #FFF;
-      font: 20px 'Orbitron', sans-serif;;
-      margin-right:50px;
+      font: 15px 'Orbitron', sans-serif;;
+      margin-right:35px;
       text-decoration: none;
       transition: border 0.2s;
       &:hover{

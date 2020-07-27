@@ -65,7 +65,7 @@ class Games extends React.Component {
         const a = this.state.page;
         return (
             <>
-                <Navbar name={this.props.profile.name} />
+                <Navbar name={this.props.profile.name} admin={this.props.profile.admin} />
                 <Container loading={this.state.loading}>
                     {
                         this.state.loading ? (<FaSpinner color="#ac2f97" size={50} />) : games.map((game, index) => (

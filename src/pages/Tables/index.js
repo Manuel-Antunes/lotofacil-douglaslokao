@@ -87,7 +87,7 @@ class Tables extends React.Component {
         const { tables } = this.state;
         return (
             <>
-                <Navbar name={this.props.profile.name} />
+                <Navbar name={this.props.profile.name} admin={this.props.profile.admin} />
                 <Container>
                     <GameTable loading={this.state.loading}>
                         <thead>

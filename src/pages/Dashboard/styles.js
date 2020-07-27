@@ -25,6 +25,8 @@ export const Create = styled.div`
         flex-wrap: wrap;
         justify-content: center;
         button{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
             border: solid 2px #ac2f97;
             background: #EEEFFF;
             margin-right: 5px;
@@ -86,7 +88,7 @@ export const Create = styled.div`
         justify-content: center;
         div{
             margin-bottom:30px;
-            max-width: 340px;
+            width: 90%;
             margin-top: 30px;
             display: flex;
             justify-content: center;
@@ -94,11 +96,12 @@ export const Create = styled.div`
                 border: solid 2px #ac2f97;
                 background: #EEEFFF;
                 margin-right: 5px;
+                font-size: 12px;
                 margin-bottom: 5px;
                 border-radius: 100%;
-                height: 30px;
+                height: 3em;
                 transition: background 0.1s,color 0.1s;
-                width: 30px;
+                width: 3em;
                 &:focus{
                     outline: none;
                 }
@@ -113,6 +116,7 @@ export const Create = styled.div`
             border-radius: 10px;
             width: 100%;
             margin-left: 0;
+            margin-top: 10px;
             border:solid #4732a3;
             background-color: #6a47e1;
             color: #FFF;
@@ -143,10 +147,12 @@ export const Scores = styled.div`
         }
     }
     @media(max-width: 720px){
+        width: 100%;
+        display:flex;
         table{
             justify-content: space-between;
             margin: 20px;
-            width: 90%;
+            width: 95%;
         }
     }
 `;
@@ -158,6 +164,7 @@ export const Comparator = styled.div`
     justify-content: center;
     flex-direction: column;
     h2{
+        font-size: 1em;
         text-align: center;
         font-family: 'Orbitron', sans-serif;
         margin-bottom: 30px;
@@ -181,15 +188,22 @@ export const Comparator = styled.div`
                 cursor: pointer;
             }
         }
-        @media(max-width:720px){
-            display: flex;
-            flex-wrap: wrap;
-            padding: 0 20px;
-            justify-content: center;
-            button{
-                width: 30px;
-                height: 30px;
+    }
+    @media(max-width:720px){
+            h2{
+                text-align: center;
+                font-family: 'Orbitron', sans-serif;
+                margin-bottom: 30px;
+            }
+            div{
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0 20px;
+                justify-content: center;
+                button{
+                    width: 30px;
+                    height: 30px;
+                }
             }
         }
-    }
 `;

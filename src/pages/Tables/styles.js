@@ -75,7 +75,7 @@ export const Pagination = styled.div`
     font-size:20px;
     button{
         padding: 6px;
-        width: 60px;
+        width: fit-content;
         border-radius: 10px;
         border: solid 2px #ac2f97;
         margin-right: 10px;

@@ -50,6 +50,7 @@ export const Container = styled.div`
         input{
             border: solid 1px #ac2f97;
             padding:15px;
+            height: 100%;
             border-radius: 50px;
             width: 300px;
             background-color: #e6e7e9;
