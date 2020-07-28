@@ -128,7 +128,6 @@ class Dashboard extends Component {
     }
 
     async componentDidMount() {
-        console.log(this.props);
         await this.setState({
             scores: [
                 {

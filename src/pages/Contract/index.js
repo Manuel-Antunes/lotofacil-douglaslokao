@@ -10,9 +10,7 @@ import { toast } from 'react-toastify';
 class Contract extends React.Component {
     async handlerContract(plan) {
         try {
-            console.log(this.props);
-            const { data } = await api.put(`user/${plan}?id=` + this.props.match.params.id);
-            console.log(data);
+            await api.put(`user/contract/${plan}?id=` + this.props.match.params.id);
         } catch (err) {
             return toast.error("Não foi possivel contratar o plano");
         }

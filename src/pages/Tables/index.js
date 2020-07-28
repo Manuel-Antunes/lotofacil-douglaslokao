@@ -54,7 +54,6 @@ class Tables extends React.Component {
             })
             try {
                 const { data } = await api.get('/tables?page=' + this.state.page);
-                console.log(data);
                 a.setState({
                     tables: data.GameTables, aLength: data.aLength, loading: false
                 })
@@ -64,7 +63,6 @@ class Tables extends React.Component {
         }
     }
     async handlerDelete(id, index) {
-        console.log(id);
         try {
             await api.delete('/tables/' + id);
         } catch{

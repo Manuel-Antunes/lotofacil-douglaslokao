@@ -53,7 +53,7 @@ class Cadastro extends React.Component {
                         </div>
                         <div>
                             <label htmlFor={"cpf"}>C.P.F</label>
-                            <Input className="form-control cpf-mask" placeholder="Ex.: 00000-000" type="text" name="cpf" id="cpf" />
+                            <Input className="form-control cpf-mask" placeholder="Ex.: 000.000.000-00" type="text" name="cpf" id="cpf" />
                         </div>
                         <div>
                             <label htmlFor={"Email"}>Email</label>

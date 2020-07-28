@@ -30,6 +30,7 @@ export const Container = styled.div.attrs(props => ({
             background-image: linear-gradient(#fff,#e0dfe1);
             border-radius: 10px;
             img{
+                border-radius: 50%;
                 transition: border 0.2s;
                 width: 30px;
                 margin-right: 10px;
@@ -53,7 +54,7 @@ export const Container = styled.div.attrs(props => ({
                 }
             `}
             @media(max-width: 720px){
-                font-size: 10px;
+                font-size: 8px;
                 width: 95%;
                 img{
                     width:20px;

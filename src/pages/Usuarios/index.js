@@ -5,6 +5,7 @@ import lixeira from '../../assets/lixeira.fw.png';
 import check from '../../assets/check.fw.png';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import lapis from '../../assets/lapis.jpeg'
 
 
 import Navbar from '../../components/Navbar';
@@ -19,7 +20,6 @@ class Usuarios extends React.Component {
     }
     async componentDidMount() {
         const { data } = await api.get("/user?loto=1&page=" + this.state.page);
-        console.log(data.users);
         this.setState({
             users: data.users,
             aLength: data.size
@@ -50,7 +50,6 @@ class Usuarios extends React.Component {
             })
             try {
                 const { data } = await api.get('/tables?page=' + this.state.page);
-                console.log(data);
                 a.setState({
                     tables: data.GameTables, aLength: data.aLength, loading: false
                 })
@@ -87,6 +86,7 @@ class Usuarios extends React.Component {
                                 <th>Usuario</th>
                                 <th>Tempo de contrato</th>
                                 <th>Editar</th>
+                                <th>Planos</th>
                                 <th>Excluir</th>
 
                             </tr>
@@ -123,7 +123,18 @@ class Usuarios extends React.Component {
                                 {
                                     users.map(user => (
                                         <tr key={user.id}>
-                                            {user.remaining_days ? user.remaining_days : "Sem contrato"}
+                                            {user.remaining_days ? parseInt(user.remaining_days) > 50000 ? "vitalicio" : user.remaining_days : "Sem contrato"}
+                                        </tr>
+                                    ))
+                                }
+                            </td>
+                            <td>
+                                {
+                                    users.map(user => (
+                                        <tr key={user.id}>
+                                            <Link to={"/usuarios/update/" + user.id}>
+                                                <img src={lapis} alt="editar usuario" />
+                                            </Link>
                                         </tr>
                                     ))
                                 }
@@ -133,7 +144,7 @@ class Usuarios extends React.Component {
                                     users.map(user => (
                                         <tr key={user.id}>
                                             <Link to={"/usuarios/contract/" + user.id}>
-                                                <img src={check} alt="editar usuarios" />
+                                                <img src={check} alt="contratar planos" />
                                             </Link>
                                         </tr>
                                     ))
