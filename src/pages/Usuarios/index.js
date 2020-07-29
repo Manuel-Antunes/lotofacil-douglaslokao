@@ -60,16 +60,20 @@ class Usuarios extends React.Component {
     }
     async handlerDelete(user, index) {
         const { users } = this.state;
-        try {
-            await api.delete('/users?id=' + user.id, {});
-        } catch (err) {
-            return toast.error("Ocorreu um erro ao tentar remover o usuário");
+        if (user.id !== this.props.profile.id) {
+            try {
+                await api.delete('/users?id=' + user.id, {});
+            } catch (err) {
+                return toast.error("Ocorreu um erro ao tentar remover o usuário");
+            }
+            toast.success("Usuário removido com sucesso");
+            users.splice(index, 1);
+            this.setState({
+                users
+            });
+        }else{
+            toast.error("você não pode deletar a si mesmo");
         }
-        toast.success("Usuário removido com sucesso");
-        users.splice(index, 1);
-        this.setState({
-            users
-        });
     }
     render() {
         const { users } = this.state;

@@ -43,23 +43,27 @@ class Upadate extends React.Component {
             }
             return toast.success(`usuario ${nameV} atualizado com sucesso`);
         }
-        if (password === passwordConfirm) {
-            try {
-                await api.put("/user/" + id, {
-                    name,
-                    cpf,
-                    email,
-                    login,
-                    telefone,
-                    password,
-                    admin
-                });
-            } catch (err) {
-                return toast.error("Ocorreu um erro ao cadastrar o usuário");
+        if (password.length >= 8) {
+            if (password === passwordConfirm) {
+                try {
+                    await api.put("/user/" + id, {
+                        name,
+                        cpf,
+                        email,
+                        login,
+                        telefone,
+                        password,
+                        admin
+                    });
+                } catch (err) {
+                    return toast.error("Ocorreu um erro ao cadastrar o usuário");
+                }
+                toast.success(`usuario ${nameV} atualizado com sucesso`);
+            } else {
+                toast.error("As senhas digitadas não batem");
             }
-            toast.success(`usuario ${nameV} atualizado com sucesso`);
         } else {
-            toast.error("As senhas digitadas não batem");
+            toast.error("O minimo de caracteres é 8 caracteres");
         }
     }
     render() {

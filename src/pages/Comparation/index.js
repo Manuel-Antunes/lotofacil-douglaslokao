@@ -27,7 +27,7 @@ class Comparation extends React.Component {
                 const { data } = await api.put('/tables?id=' + this.props.match.params.id, { selectedNumbers });
                 var gain = 0;
                 const [onze, doze, treze, quatorze, quinze] = data.pontos;
-                await api.put('/user/check', { onze, doze, treze, quatorze, quinze });
+                await api.post('/user/check', { onze, doze, treze, quatorze, quinze });
                 const { dispatch } = this.props;
                 dispatch(updateMainScreen(onze, doze, treze, quatorze, quinze));
                 data.pontos.forEach((e, index) => {
@@ -53,7 +53,7 @@ class Comparation extends React.Component {
                 <Navbar name={this.props.profile.name} admin={this.props.profile.admin} />
                 <Container >
                     <Comparator>
-                        <h2>Comparator</h2>
+                        <h2>Conferir Jogos</h2>
                         <div>
                             {
                                 array.map(element => (

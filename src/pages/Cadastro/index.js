@@ -15,25 +15,33 @@ class Cadastro extends React.Component {
     async handlerSubmit({ name, cpf, email, login, telefone, password, passwordConfirm }) {
         const admin = document.getElementById("admin").checked;
         var nameV = "";
-        if (password === passwordConfirm) {
-            try {
-                const { data } = await api.post("/user", {
-                    name,
-                    cpf,
-                    email,
-                    login,
-                    telefone,
-                    password,
-                    loto_fk: 1,
-                    admin
-                });
-                nameV = data.name;
-            } catch (err) {
-                return toast.error("Ocorreu um erro ao cadastrar o usuário");
+        if (name !== "" || cpf !== "" || email !== "" || login !== "" || telefone !== "" || password !== "" || passwordConfirm !== "") {
+            if (password.length >= 8) {
+                if (password === passwordConfirm) {
+                    try {
+                        const { data } = await api.post("/user", {
+                            name,
+                            cpf,
+                            email,
+                            login,
+                            telefone,
+                            password,
+                            loto_fk: 1,
+                            admin
+                        });
+                        nameV = data.name;
+                    } catch (err) {
+                        return toast.error("Ocorreu um erro ao cadastrar o usuário");
+                    }
+                    toast.success(`usuario ${nameV} cadastrado com sucesso`);
+                } else {
+                    toast.error("As senhas digitadas não batem");
+                }
+            } else {
+                toast.error("O minimo de caracteres é 8 caracteres");
             }
-            toast.success(`usuario ${nameV} cadastrado com sucesso`);
         }else{
-            toast.error("As senhas digitadas não batem");
+            toast.error("Não deixe campos em branco");
         }
     }
     render() {
@@ -65,7 +73,7 @@ class Cadastro extends React.Component {
                         </div>
                         <div>
                             <label htmlFor={"Senha"}>Senha</label>
-                            <Input className="form-control" placeholder="Campo de senha" type="password" name="password" id="password" />
+                            <Input className="form-control" placeholder="Minimo de 8 caracteres" type="password" name="password" id="password" />
                         </div>
                         <div>
                             <label htmlFor={"ConfirmSenha"}>Confirmar Senha</label>

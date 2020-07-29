@@ -36,7 +36,6 @@ function Signin() {
                     <Input className="form-control" placeholder="Insira aqui seu email" type="text" name="login" id="login" />
                     <label htmlFor={"passoword"}>Senha</label>
                     <Input className="form-control" placeholder="Insira aqui sua senha" type="password" name="password" id="password" />
-                    <h3>esqueci minha senha</h3>
                     <button type="submit">{loading ? "carregando..." : "Login"}</button>
                 </Form>
             </div>
